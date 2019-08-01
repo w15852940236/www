@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="Ibatis" xmlns="http://ibatis.apache.org/mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="DemoUser" type="BlogMybatis.Models.DemoUser" />
+  </alias>
+  <statements>
+    <delete id="Delete" parameterClass="int">
+      delete from DemoUser where UserId=#UserId#
+    </delete>
+    <select id="Select" resultClass="DemoUser">
+      select * from DemoUser ORDER BY UserId DESC
+    </select>
+    <select id="SelectById" resultClass="DemoUser">
+      select * from DemoUser WHERE UserId=#UserId# ORDER BY UserId DESC
+    </select>
+    <insert id="Insert" parameterClass="DemoUser">
+      INSERT INTO DemoUser(
+      [UserName],[PassWord]
+      )VALUES(
+      #UserName#,#PassWord#
+      )
+    </insert>
+    <update id="Update" parameterClass="DemoUser">
+      UPDATE DemoUser SET [UserName]=#UserName#,[PassWord]=#PassWord# WHERE UserId=#UserId#
+    </update>
+  </statements>
+</sqlMap>
